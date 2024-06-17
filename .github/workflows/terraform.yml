@@ -2,7 +2,7 @@ name: Nestjs project
 on: 
   push:
     branches:
-      - master
+      - main
 jobs:
   Deploy_the_application:
     runs-on: ubuntu-20.04
@@ -19,8 +19,8 @@ jobs:
         uses: hashicorp/terraform-github-actions/init@v0.4.0
       - name: Deploying application by using terraform 
         run: terraform init 
-        working-directory: .
+        working-directory: ./Terraform
       - name: Apply the infrastructure
         run: terraform apply  -var-file "dev.tfvars" -auto-approve
-        working-directory: .
+        working-directory: ./Terraform
              
