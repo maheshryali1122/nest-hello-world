@@ -2,7 +2,7 @@ name: Nestjs project
 on: 
   push:
     branches:
-      - main
+      - master
 jobs:
   Deploy_the_application:
     runs-on: ubuntu-20.04
