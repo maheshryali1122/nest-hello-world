@@ -43,7 +43,7 @@ resource "null_resource" "nullr" {
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    private_key = file("./id_rsa") 
+    private_key = file("~/.ssh/id_rsa") 
     host        = aws_instance.nestjs.public_ip
   }
 
