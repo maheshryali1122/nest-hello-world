@@ -2,7 +2,7 @@ name: Nestjs project
 on: 
   push:
     branches:
-      - master
+      - main
 jobs:
   Deploy_the_application:
     runs-on: ubuntu-20.04
@@ -20,6 +20,11 @@ jobs:
       - name: Deploying application by using terraform 
         run: terraform init 
         working-directory: ./Terraform
+      - name: Configuring ssh key in github
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa  
       - name: Apply the infrastructure
         run: terraform apply  -var-file "dev.tfvars" -auto-approve
         working-directory: ./Terraform
