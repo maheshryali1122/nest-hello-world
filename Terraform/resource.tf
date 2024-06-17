@@ -1,7 +1,7 @@
 resource "aws_vpc" "myvpc" {
     cidr_block = var.vpccidr
     tags = {
-        Name = "Ecsvpc"
+        Name = "nestjs"
     }
 }
 resource "aws_subnet" "subnets" {
@@ -13,17 +13,17 @@ resource "aws_subnet" "subnets" {
         Name = var.subnettagnames[count.index]
     }
 }
-resource "aws_internet_gateway" "ecsigw" {
+resource "aws_internet_gateway" "nestjsigw" {
     vpc_id = aws_vpc.myvpc.id
     tags = {
-        Name = "Ecsigw"
+        Name = "nestjsigw"
     }
 }
 resource "aws_route_table" "routetables" {
     vpc_id = aws_vpc.myvpc.id
     route {
         cidr_block = "0.0.0.0/0"
-        gateway_id = aws_internet_gateway.ecsigw.id
+        gateway_id = aws_internet_gateway.nestjsigw.id
     }
     tags = {
         Name = "public_route_table"
