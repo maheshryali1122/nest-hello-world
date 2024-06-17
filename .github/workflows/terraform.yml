@@ -25,7 +25,7 @@ jobs:
       - name: Deploying application by using terraform 
         env:
           TF_PLUGIN_CACHE_DIR: /home/runner/.terraform.d/plugins
-        run: terraform init 
+        run: terraform init -plugin-dir=/home/runner/.terraform.d/plugins
       - name: Apply the infrastructure
         run: terraform apply  -var-file "dev.tfvars" -auto-approve
              
