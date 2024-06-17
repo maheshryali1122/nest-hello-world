@@ -2,7 +2,7 @@ name: Nestjs project
 on: 
   push:
     branches:
-      - master
+      - main
 jobs:
   Deploy_the_application:
     runs-on: ubuntu-20.04
@@ -22,6 +22,10 @@ jobs:
           
       - name: Setting up terraform
         uses: hashicorp/terraform-github-actions/init@v0.4.0
+      - name: Create Terraform Plugin Cache Directory
+        run: mkdir -p /home/runner/.terraform.d/plugins
+      - name: Set Permissions for Plugin Cache Directory
+        run: chmod -R 755 /home/runner/.terraform.d/plugins
       - name: Deploying application by using terraform 
         env:
           TF_PLUGIN_CACHE_DIR: /home/runner/.terraform.d/plugins
