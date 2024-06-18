@@ -53,7 +53,7 @@ resource "null_resource" "nullr" {
     "sudo apt install -y nodejs npm",
     "cd nest-hello-world",
     "npm install",
-    "npm run start &"
+    "nohup npm run start &"
   ]
 }
   
