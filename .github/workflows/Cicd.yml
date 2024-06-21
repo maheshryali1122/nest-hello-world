@@ -31,7 +31,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} \
             "cd /home/ubuntu/nest-hello-world && \
             git pull origin master && \
+            pm2 stop all || true
             npm install && \
-            npm run start && \
             pm2 restart 
             "
