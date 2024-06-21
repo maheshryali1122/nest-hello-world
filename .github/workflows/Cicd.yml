@@ -33,5 +33,5 @@ jobs:
             git pull origin master && \
             pm2 stop all || true && \
             npm install && \
-            pm2 restart 
+            pm2 restart all
             "
